@@ -77,12 +77,12 @@ public class Character : MonoBehaviourPun, IPunObservable
         }
     }
 
-    private void PiumPium()
+    public void PiumPium()
     {
         PhotonNetwork.Instantiate("Bullet", transform.position + new Vector3(1f, 0f, 0f), Quaternion.identity);
     }
 
-    private void Damage()
+    public void Damage()
     {
         pv.RPC("NetworkDamage", RpcTarget.All);
     }
