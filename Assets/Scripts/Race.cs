@@ -12,7 +12,7 @@ public class Race
     public float damage;
     public float jumping;
 
-    public enum RaceType { PatitoFeo, PatitoGuapo}
+    public enum RaceType { PatitoFeo, PatitoGuapo }
     RaceType raceType;
 
     public Race()

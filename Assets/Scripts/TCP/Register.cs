@@ -11,7 +11,7 @@ public class Register : MonoBehaviour
     [SerializeField] Text registerPasswordText;
     [SerializeField] Dropdown raceSelector;
     [SerializeField] string raceSelected;
-    Race race;
+    public Race race;
 
     private void Awake()
     {
