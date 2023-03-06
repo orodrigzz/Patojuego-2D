@@ -19,7 +19,7 @@ public class Network_Manager : MonoBehaviour
     [SerializeField]
     List<Race> avaiableRaces = new List<Race>();
 
-    const string host = "10.0.2.15";
+    const string host = "10.40.3.69";
     const int port = 6543;
 
     private void Awake()
@@ -77,19 +77,15 @@ public class Network_Manager : MonoBehaviour
     {
         if (data == "ping")
         {
-            Debug.Log("Recibo ping");
             writer.WriteLine("1");
             writer.Flush();
         }
         else if (data.Split('/')[0] == "2")
         {
-            Debug.Log("Logeo Correcto");
-
             writer.Flush();
         }
         else if (data == "3")
         {
-            Debug.Log("Logeo Incorrecto");
             writer.Flush();
         }
         else if (data == "UserNick")
@@ -179,7 +175,6 @@ public class Network_Manager : MonoBehaviour
             writer.WriteLine("AddRaceUser" + "/" + currentUser.GetId() + "/" + raceName);
 
             writer.Flush();
-
         }
         catch (Exception e)
         {
@@ -285,6 +280,7 @@ public class Network_Manager : MonoBehaviour
         Race classToReturn = new Race(name, speed, cadency, health, damage, jumping, idDatabase);
         return classToReturn;
     }
+
     public Race GetRaceByNickname(string nicknamePlayer)
     {
         foreach (Race r in avaiableRaces)

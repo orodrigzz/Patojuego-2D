@@ -4,10 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class RegisterBehaviour : MonoBehaviour
+public class Register : MonoBehaviour
 {
     [SerializeField] Button registerButton;
-    //[SerializeField] Button backButton;
     [SerializeField] Text nickRegisterText;
     [SerializeField] Text registerPasswordText;
     [SerializeField] Dropdown raceSelector;
@@ -23,13 +22,8 @@ public class RegisterBehaviour : MonoBehaviour
         if (nickRegisterText.text != ""  && registerPasswordText.text != "" && raceSelected != null)
         {
             Network_Manager._NETWORK_MANAGER.Register(nickRegisterText.text, registerPasswordText.text);
-
-            //Network_Manager._NETWORK_MANAGER.AssingRaceToUser(race);
-            //Network_Manager._NETWORK_MANAGER.SendInfoToAddRaceAndPlayer(raceSelected);
-            SceneManager.LoadScene("LoginScreen");
-
-
-
+            
+            SceneManager.LoadScene("LogIn");
         }
     }
 
@@ -37,15 +31,13 @@ public class RegisterBehaviour : MonoBehaviour
     {
         if (raceSelector.value == 0)
         {
-            
-            race.SetClass(Race.RaceType.PATO_TORREMOLINOS);
-            raceSelected = " PATO TORREMOLINOS";
-
+            race.SetClass(Race.RaceType.PatitoFeo);
+            raceSelected = "PatitoFeo";
         }
         else if (raceSelector.value == 1)
         {
-            race.SetClass(Race.RaceType.PATO_BENALMADENA);
-            raceSelected = "PATO BENALMADENA";
+            race.SetClass(Race.RaceType.PatitoGuapo);
+            raceSelected = "PatitoGuapo";
         }
     }
 }

@@ -12,7 +12,7 @@ public class Race
     public float damage;
     public float jumping;
 
-    public enum RaceType { PATO_TORREMOLINOS, PATO_BENALMADENA}
+    public enum RaceType { PatitoFeo, PatitoGuapo}
     RaceType raceType;
 
     public Race()
@@ -33,10 +33,10 @@ public class Race
         switch (name)
         {
             case "1":
-                raceType = RaceType.PATO_TORREMOLINOS;
+                raceType = RaceType.PatitoFeo;
                 break;
             case "2":
-                raceType = RaceType.PATO_BENALMADENA;
+                raceType = RaceType.PatitoGuapo;
                 break;
         }
     }

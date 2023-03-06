@@ -99,9 +99,6 @@ public class PHOTON_MANAGER : MonoBehaviourPunCallbacks
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
-       
-        
-
         if (PhotonNetwork.CurrentRoom.PlayerCount == PhotonNetwork.CurrentRoom.MaxPlayers)
         {
             if (PhotonNetwork.IsMasterClient)
@@ -113,10 +110,6 @@ public class PHOTON_MANAGER : MonoBehaviourPunCallbacks
         }
     }
 
-    void LoadLevel()
-    {
-
-    }
     public void LeaveCurrentRoom()
     {
         PhotonNetwork.LeaveRoom(true);
