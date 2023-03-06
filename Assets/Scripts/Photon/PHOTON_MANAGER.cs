@@ -25,7 +25,6 @@ public class PHOTON_MANAGER : MonoBehaviourPunCallbacks
 
             //Realizo conexion
             PhotonConnect();
-
         }
     }
 
@@ -55,7 +54,7 @@ public class PHOTON_MANAGER : MonoBehaviourPunCallbacks
     public override void OnJoinedLobby()
     {
         Debug.Log("Accedido al Lobby");
-        PhotonNetwork.LoadLevel("LoginRegister");
+        PhotonNetwork.LoadLevel("LogInRegister");
     }
 
     //Funcion para crear salas
@@ -108,7 +107,7 @@ public class PHOTON_MANAGER : MonoBehaviourPunCallbacks
             {
                 nickEnemy = newPlayer.NickName;
                 Network_Manager._NETWORK_MANAGER.SendNickToGetRace(nickEnemy);
-                PhotonNetwork.LoadLevel("Gameplay");
+                PhotonNetwork.LoadLevel("Game");
             }
         }
     }

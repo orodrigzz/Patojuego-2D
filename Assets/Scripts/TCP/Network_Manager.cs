@@ -17,7 +17,7 @@ public class Network_Manager : MonoBehaviour
     public static User currentUser = new User();
 
     [SerializeField]
-    List<Race> avaiableRaces = new List<Race>();
+    List<Race> availableRaces = new List<Race>();
 
     const string host = "10.0.2.15";
     const int port = 6543;
@@ -216,7 +216,7 @@ public class Network_Manager : MonoBehaviour
 
     public List<Race> GetAvaiableRaces()
     {
-        return avaiableRaces;
+        return availableRaces;
     }
 
     void SetNewUserWithRace(string[] userWithRace)
@@ -259,10 +259,10 @@ public class Network_Manager : MonoBehaviour
             race.damage = damage;
             race.id_bd = idDatabase;
 
-            avaiableRaces.Add(race);
+            availableRaces.Add(race);
         }
 
-        foreach (Race r in avaiableRaces)
+        foreach (Race r in availableRaces)
         {
             if (r.id_bd == currentUser.Getid_race())
             {
@@ -287,7 +287,7 @@ public class Network_Manager : MonoBehaviour
     }
     public Race GetRaceByNickname(string nicknamePlayer)
     {
-        foreach (Race r in avaiableRaces)
+        foreach (Race r in availableRaces)
         {
             if (r.GetId() == currentUser.Getid_race())
             {
