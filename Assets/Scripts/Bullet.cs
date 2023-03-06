@@ -2,20 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
-
 public class Bullet : MonoBehaviourPun
 {
-
-    [SerializeField]
-    private float speed = 10f;
+    public float speed = 10f;
     private Rigidbody2D rb;
-
     private PhotonView pv;
 
     private void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
         pv = GetComponent<PhotonView>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     private void Start()
@@ -27,11 +23,13 @@ public class Bullet : MonoBehaviourPun
     {
         collision.gameObject.GetComponent<Character>().Damage();
         pv.RPC("NetworkDestroy", RpcTarget.All);
-    }
 
+    }
     [PunRPC]
-    public void NetworkDestroy()
+    void NetworkDestroy()
     {
         Destroy(this.gameObject);
     }
+
 }
+
