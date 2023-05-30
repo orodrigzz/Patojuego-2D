@@ -371,7 +371,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Player21
+  m_text: Anonymous
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -470,7 +470,7 @@ Transform:
   m_GameObject: {fileID: 8354793098011359506}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.1040612, y: -0.6358149, z: 0}
-  m_LocalScale: {x: 6, y: 6, z: 6}
+  m_LocalScale: {x: 4, y: 4, z: 6}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2798477374143067419}
@@ -588,13 +588,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdfc620dd70a1a54b9fa1c24597ea7c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 75
+  jumping: 0
   lives: 3
   health: 100
   damage: 15
   cadency: 0
   timeSinceLastShot: 0
-  speed: 75
-  jumping: 0
   bulletPrefab: {fileID: 7365030972617117134, guid: 8c6c0c48320cfa846ae2c69bda91a1ef, type: 3}
 --- !u!114 &2754871735918078031
 MonoBehaviour:

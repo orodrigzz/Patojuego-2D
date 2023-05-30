@@ -1,21 +1,35 @@
 using UnityEngine;
 using Photon.Pun;
+using UnityEngine.SceneManagement;
 
 public class Character : MonoBehaviourPun, IPunObservable
 {
+    [SerializeField] private float speed;
+    [SerializeField] private float jumping;
+
     [SerializeField] private int lives;
     [SerializeField] private float health;
     [SerializeField] private float damage;
 
     [SerializeField] private float cadency;
     [SerializeField] private float timeSinceLastShot = 0;
-    
-    [SerializeField] private float speed;
-    [SerializeField] private float jumping;
 
+    private Rigidbody2D rb;
+    private SpriteRenderer sr;
+    private float desiredMovementAxis = 0f;
+
+    private PhotonView pv;
+    private Vector3 enemyPosition = Vector3.zero;
+    private Vector3 spawnPosition;
+
+    [SerializeField] private GameObject bulletPrefab;
+
+    private PlayerCanvas playerCanvas;
+
+    //Funciones
     public float GetHealth() { return health; }
 
-    public void SetAttributes(Race race) 
+    public void SetAttributes(Race race)
     {
         health = race.health;
         damage = race.damage;
@@ -24,18 +38,8 @@ public class Character : MonoBehaviourPun, IPunObservable
         jumping = race.jumping;
     }
 
-    private Vector3 spawnPosition;
     public void SetSpawnPosition(Vector3 position) { spawnPosition = position; }
 
-    private SpriteRenderer sr;
-    private Rigidbody2D rb;
-    private float desiredMovementAxis = 0f;
-
-    private PhotonView pv;
-    private Vector3 enemyPosition = Vector3.zero;
-
-    [SerializeField] private GameObject bulletPrefab;
-    private PlayerCanvas playerCanvas;
     public PlayerCanvas GetPlayerCanvas() { return playerCanvas; }
 
     private void Awake()
@@ -99,13 +103,13 @@ public class Character : MonoBehaviourPun, IPunObservable
     {
         if (sr.flipX)
         {
-            GameObject bulletTmp = PhotonNetwork.Instantiate("Bullet", transform.position + new Vector3(-1.2f, 0, 0), Quaternion.identity);
+            GameObject bulletTmp = PhotonNetwork.Instantiate("Bullet", transform.position + new Vector3(-3f, 0, 0), Quaternion.identity);
             bulletTmp.GetComponent<Bullet>().direction = -1;
             bulletTmp.GetComponent<Bullet>().SetPlayerDamage(damage);
         }
         else
         {
-            GameObject bulletTmp = PhotonNetwork.Instantiate("Bullet", transform.position + new Vector3(1.2f, 0, 0), Quaternion.identity);
+            GameObject bulletTmp = PhotonNetwork.Instantiate("Bullet", transform.position + new Vector3(3f, 0, 0), Quaternion.identity);
             bulletTmp.GetComponent<Bullet>().SetPlayerDamage(damage);
         }
     }
@@ -150,6 +154,7 @@ public class Character : MonoBehaviourPun, IPunObservable
             // Game Over
             if (lives <= 0) {
                 Destroy(this.gameObject);
+                SceneManager.LoadScene("END");
             }
 
             transform.position = spawnPosition;
